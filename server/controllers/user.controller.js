@@ -25,9 +25,7 @@ module.exports.register = (req, res, next) => {
     userSecurity.userId = req.body.userId;
     userSecurity.password = req.body.password;
     userSecurity.save((err, doc) => {
-        if (!err)
-            res.send(doc);
-        else {
+        if (err){
             return next(err);
         }
 
@@ -46,13 +44,21 @@ module.exports.authenticate = (req, res, next) => {
     })(req, res);
 }
 
-module.exports.userProfile = (req, res, next) =>{
-    User.findOne({ _id: req._id },
+module.exports.userProfile = (req, res, next) =>{//if user record not found check in usersecurity table and then eturn users
+   UserSecurity.findOne({ _id: req._id },
         (err, user) => {
             if (!user)
-                return res.status(404).json({ status: false, message: 'User record not found.' });
-            else
-                return res.status(200).json({ status: true, user : _.pick(user,['fullName','email']) });
+                return res.status(404).json({ status: false, message: 'Secured User record not found.' });
+            else{
+                User.findOne( _.pick(user,['userId']),
+                    (err, user) => {
+                        if (!user)
+                            return res.status(404).json({ status: false, message: 'User Info not found.' });
+                        else
+                            return res.status(200).json({ status: true, user : _.pick(user,['fullName','email', 'userId']) });
+                    }
+                );
+            }
         }
     );
 }
