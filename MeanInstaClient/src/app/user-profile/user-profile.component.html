@@ -1,4 +1,4 @@
-<table *ngIf="userDetails" class="table-fill">
+<!-- <table *ngIf="userDetails" class="table-fill">
   <thead>
       <tr>
           <th colspan="2" class="text-center">User Profile</th>
@@ -18,16 +18,32 @@
           <td>{{userDetails.email}}</td>
       </tr>
       <tr>
-          <td colspan="2" class="text-center">
-              <input type="button" (click)="onLogout()" value="Logout" />
-          </td>
+          <td colspan="2" class="text-center"> -->
+           <!--    <input type="button" (click)="onLogout()" value="Logout" /> -->
+<!--           </td>
       </tr>
   </tbody>
-</table>
-
-
+</table> -->
+<div style="text-align: right;">
+<input style="background-color: #e5e5e5;color: #333; padding: 5px;" type="button" (click)="onLogout()" value="Logout" />
+</div>
 <div>
+ <input type="file" name="photo" ng2FileSelect [uploader]="uploader" />
+ <button type="button" class="btn btn-success btn-s" 
+  (click)="uploader.uploadAll()" 
+  [disabled]="!uploader.getNotUploadedItems().length" >
+      Upload an Image
+</button>
+</div>
 
 
 
-	</div>
+<div class="container text-center" style="margin: auto;text-align: center;">
+  <h2>MeanInsta</h2>
+  <div *ngFor="let item of files">
+    <div style="    border: 1px solid #333;">
+      <img src="assets/img/{{item}}" style="height: 700px;width: 700px;"/>
+      <div>{{item}}</div>
+    <div>
+  </div>
+</div> 

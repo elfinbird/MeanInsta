@@ -4,6 +4,7 @@ import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
 import { HttpClientModule,HTTP_INTERCEPTORS } from '@angular/common/http';
+import { FileSelectDirective } from 'ng2-file-upload';
 // components
 import { AppComponent } from './app.component';
 import { UserComponent } from './user/user.component';
@@ -23,7 +24,8 @@ import { AuthInterceptor } from './auth/auth.interceptor';
     UserComponent,
     SignUpComponent,
     UserProfileComponent,
-    SignInComponent
+    SignInComponent,
+    FileSelectDirective
   ],
   imports: [
     BrowserModule,

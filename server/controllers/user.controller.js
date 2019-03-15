@@ -1,6 +1,14 @@
-const mongoose = require('mongoose');
+    const mongoose = require('mongoose');
 const passport = require('passport');
 const _ = require('lodash');
+const path = require('path');
+const crypto = require('crypto');
+const multer = require('multer');
+const GridFsStorage = require('multer-gridfs-storage');
+const Grid = require('gridfs-stream');
+const methodOverride = require('method-override');
+const testFolder = '../MeanInstaClient/src/assets/img/';
+const fs = require('fs');
 
 const User = mongoose.model('User');
 const UserSecurity = mongoose.model('UserSecurity');
@@ -50,15 +58,30 @@ module.exports.userProfile = (req, res, next) =>{//if user record not found chec
             if (!user)
                 return res.status(404).json({ status: false, message: 'Secured User record not found.' });
             else{
+                newfiles = [];
+                fs.readdir(testFolder, (err, files) => {
+                  if(files){
+                        newfiles = files;
+                  }
+                });
                 User.findOne( _.pick(user,['userId']),
                     (err, user) => {
                         if (!user)
                             return res.status(404).json({ status: false, message: 'User Info not found.' });
-                        else
-                            return res.status(200).json({ status: true, user : _.pick(user,['fullName','email', 'userId']) });
+                        else{
+                            return res.status(200).json({ status: true, file : newfiles, user : _.pick(user,['fullName','email', 'userId']) });
+                        }
                     }
                 );
             }
         }
     );
 }
+
+/*module.exports.allImages = (req, res, next) =>{//if user record not found check in usersecurity table and then eturn users
+    fs.readdir(testFolder, (err, files) => {
+      files.forEach(file => {
+        console.log(file);
+      });
+    });
+}*/
