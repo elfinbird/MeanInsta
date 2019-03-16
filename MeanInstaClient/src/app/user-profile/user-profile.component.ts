@@ -12,7 +12,7 @@ const URL = 'http://localhost:3000/api/upload'; //environment.apiBaseUrl+'/api/u
 })
 export class UserProfileComponent implements OnInit {
   userDetails;
-  files: Array<string> = [];
+  files: Array<string> = []; //make object of arrays
   showSucessMessage: boolean;
   serverErrorMessages: string;
   tempFileNameArr: Array<string> = [];

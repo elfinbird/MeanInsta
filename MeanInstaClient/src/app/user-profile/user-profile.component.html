@@ -1,49 +1,39 @@
-<!-- <table *ngIf="userDetails" class="table-fill">
-  <thead>
-      <tr>
-          <th colspan="2" class="text-center">User Profile</th>
-      </tr>
-  </thead>
-  <tbody>
-      <tr>
-          <td>User ID</td>
-          <td>{{userDetails.userId}}</td>
-      </tr>
-      <tr>
-          <td>Full Name</td>
-          <td>{{userDetails.fullName}}</td>
-      </tr>
-      <tr>
-          <td>Email</td>
-          <td>{{userDetails.email}}</td>
-      </tr>
-      <tr>
-          <td colspan="2" class="text-center"> -->
-           <!--    <input type="button" (click)="onLogout()" value="Logout" /> -->
-<!--           </td>
-      </tr>
-  </tbody>
-</table> -->
 <div style="text-align: right;">
-<input style="background-color: #e5e5e5;color: #333; padding: 5px;" type="button" (click)="onLogout()" value="Logout" />
+ <button mat-stroked-button (click)="onLogout()" value="Logout">Logout</button>
 </div>
-<div>
+<h2 class="headerTitle">MeanInsta</h2>
+<div style="position: absolute;top: 0;">
  <input type="file" name="photo" ng2FileSelect [uploader]="uploader" />
- <button type="button" class="btn btn-success btn-s" 
+
+ <button type="button" mat-icon-button
   (click)="uploader.uploadAll()" 
   [disabled]="!uploader.getNotUploadedItems().length" >
-      Upload an Image
+      <mat-icon>cloud_upload</mat-icon>
 </button>
+
+
 </div>
-
-
-
-<div class="container text-center" style="margin: auto;text-align: center;">
-  <h2>MeanInsta</h2>
-  <div *ngFor="let item of files">
-    <div style="    border: 1px solid #333;">
-      <img src="assets/img/{{item}}" style="height: 700px;width: 700px;"/>
-      <div>{{item}}</div>
-    <div>
-  </div>
-</div> 
+<mat-divider style="    margin: 10px 0;"></mat-divider>
+<div style="margin: 0 3.5em;">
+<mat-card class="example-card" *ngFor="let item of files">
+  <mat-card-header>
+    <div mat-card-avatar class="example-header-image"></div>
+    <mat-card-title>{{userDetails.userId}}</mat-card-title>
+    <mat-card-subtitle>{{userDetails.fullName}}</mat-card-subtitle>
+  </mat-card-header>
+  <mat-card-content>
+    <img src="assets/img/{{item}}"/>
+    <p>
+     Caption goes here
+    </p>
+  </mat-card-content>
+  <mat-card-actions>
+    <button mat-icon-button color="warn">
+      <mat-icon aria-label="Example icon-button with a heart icon">favorite</mat-icon>
+    </button>
+     <button mat-icon-button color="primary">
+      <mat-icon aria-label="Example icon-button with a heart icon">chat_bubble_outline</mat-icon>
+    </button>
+  </mat-card-actions>
+</mat-card>
+</div>
