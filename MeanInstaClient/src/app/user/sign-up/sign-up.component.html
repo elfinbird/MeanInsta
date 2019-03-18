@@ -7,6 +7,12 @@
   <div *ngIf="signUpForm.submitted && !fullName.valid">
     <label class="validation-message">This field is required.</label>
   </div>
+  <input type="text" #email="ngModel" [(ngModel)]="userService.selectedUser.email" name="email" placeholder="Email"
+  required [pattern]="emailRegex"  [ngClass]="{'invalid-textbox' :signUpForm.submitted && !email.valid }">
+  <div *ngIf="signUpForm.submitted && email.errors">
+    <label *ngIf="email.errors.required" class="validation-message">This field is required.</label>
+    <label *ngIf="email.errors.pattern" class="validation-message">Invalid email address.</label>
+  </div>
   <input type="text" #userId="ngModel" [(ngModel)]="userService.selectedUser.userId" name="userId" placeholder="User ID"
   required [ngClass]="{'invalid-textbox' :signUpForm.submitted && !userId.valid }">
   <div *ngIf="signUpForm.submitted && userId.errors">

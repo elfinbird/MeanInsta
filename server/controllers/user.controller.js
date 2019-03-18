@@ -18,6 +18,8 @@ module.exports.register = (req, res, next) => {
     user.fullName = req.body.fullName;
     user.email = req.body.email;
     user.userId = req.body.userId;
+    console.log("register ");
+    console.log(user);
     user.save((err, doc) => {
         if (!err)
             res.send(doc);
