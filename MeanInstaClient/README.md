@@ -2,25 +2,34 @@
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 7.3.4.
 
-## Development server
+Instruction to deploy the application:
+##Download the repository
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
+##Server Configuration
+Navigate to 'MeanInsta\server\config' and open config.json
+Here, update the "MONGODB_URI" following the below example.
+MONGODB_URI: This represent the MongoDB url you need to connect to. 
+eg:
+MONGODB_URL = "mongodb://localhost:27017/MeanInsta"; where
+'mongodb://localhost:27017/' is the mongo database url
+'MeanInsta' is the collection name where you need to save application related details.
 
-## Code scaffolding
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+##Server side
+Navigate to 'MeanInsta\server' folder and run the following command on command prompt
+`node app.js`
 
-## Build
+##Client side
+Navigate to 'MeanInsta\MeanInstaClient' folder and run the following on command prompt
+`ng build`
+`ng serve -o`
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `--prod` flag for a production build.
+##Running the application
+Once the app is deployed, user will be navigated to the login screen.
+For a new user, navigate to the 'Sign-up' option and create a new user.
 
-## Running unit tests
-
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
-
-## Running end-to-end tests
-
-Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protractortest.org/).
+Once a user is created, navigate to 'Sign-in' option and log into the application and there you go! 
+Upload your images :)
 
 ## Further help
 
