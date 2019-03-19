@@ -43,4 +43,6 @@ For a new user, navigate to the 'Sign-up' option and create a new user.
 
 Once a user is created, navigate to 'Sign-in' option and log into the application and there you go! 
 
-Upload your images :)
+To upload images please look into the snapshot attached below
+
+![Screenshot](Screenshot.png)
