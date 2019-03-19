@@ -31,6 +31,8 @@ Navigate to 'MeanInsta\server' folder and run the following command on command p
 Navigate to 'MeanInsta\MeanInstaClient' folder and run the following on command prompt 
 
 `ng build`
+
+
 `ng serve -o`
 
 ##Running the application 
